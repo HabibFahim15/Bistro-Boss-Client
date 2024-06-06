@@ -12,7 +12,8 @@ const Login = () => {
   const location = useLocation()
   const {signIn} = useContext(AuthContext)
 
-  const from = location.state?.form?.pathName || '/'
+  const from = location.state?.form?.pathname || '/'
+  console.log(location.state);
 
   useEffect(()=>{
     loadCaptchaEnginge(6); 
@@ -86,7 +87,7 @@ const Login = () => {
             </div>
             <div className="form-control">
              <LoadCanvasTemplate />
-             <input onBlur={handleValidateCaptcha}  type="password" name="captcha" placeholder="Type the Captcha" className="input input-bordered" required />
+             <input onBlur={handleValidateCaptcha}  type="password" name="captcha" placeholder="Type the Captcha" className="input input-bordered"/>
               <label className="label">
                 
                
@@ -95,8 +96,8 @@ const Login = () => {
              </label>
            </div>
             <div className="form-control mt-6">
-              
-              <input disabled={disabled} className="btn btn-primary" type="submit"  value={'Login'} />
+              {/* todo false to disabled */}
+              <input disabled={false} className="btn btn-primary" type="submit"  value={'Login'} />
             </div>
           </form>
           <p className="pb-8 pl-8"><small>New Here? <Link to={'/signup'}>Create an account</Link> </small></p>
